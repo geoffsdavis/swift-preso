@@ -1,0 +1,135 @@
+SWIFT
+
+Overview
+
+	- History 
+	- Age
+	- Versions
+	- My own experience
+
+So Wny Bother?
+
+	- Not just Objc-C without the semi-colons
+
+	- The Big 3
+		- Optionals
+		- Strongly Typed
+		- Immutability
+
+
+Optionals
+
+	- Explain
+		- It's a wrapper, actually an enum that can contain either the value or a nil
+		- How to declare (adding ?)
+		- Implicitly unwrapped options (e.g. var name: String!)
+			- Defeats purpose, but okay in some instances
+			- Do it where nil is clearly a mistake, and the dev who passed it should fix it
+		- Unwrapping
+			- ? vs !
+			- chaining ? and !
+			- if let
+				- chaining let
+			- guard let
+	- Best Practices
+		- Use ! wiesely
+
+
+Strongly Typed
+
+	- Bsaic values
+	- Arrays and Dicts
+		- Collections are value types! (not reference, so no implicit sharing/ mutability concerens)
+	- Any and AnyObject
+	- Custom Typedefs
+	- Casting with as? (will either force-cast or return nil)
+
+
+Immutables
+
+	- let vs. var
+		- whenever possible, prefer let over var
+			- let is read-only ?? check var properties inside a let class
+			- let is thread-safe
+			- threading mutability safety (no race conditions), because immutables are getting passed by copying
+
+
+More Caught at the Compiler
+
+	- Benefits
+		- Code safety
+		- Greater clarity
+
+
+Enums & Structs (& Tuples)
+
+	- These are both value types, as opposed to reference types
+		- Value types elimiate need to copy() all the time
+			- No more need for NSCopying, implementing it
+		- Every value type should conform to Equatable protocol (WWDC 2015 value types)
+	- Enums
+		- Backing data type must conform to the Equatable protocol
+		- Backing data type must be literal convertible from any of the following types:
+			- Int
+			- String
+			- Character
+	- Structs
+		- Not sure, but I believe values vs. refs allow decoupling of mutability vs. immmutabilitiy and copying vs. sharing
+		- Foundation classes as structs in Swift
+	- Tuples
+	- Examples
+
+
+
+
+Protocol-Oriented Programming Language
+
+	- don't start with a class (superclass), start with a protocol
+		- sort of like, favor composition over inheritance
+	- forced downcast  (e.g. ... as! SomeObject)is bad code smell
+	- protocol can have a "Self" type, which makes them homogenous
+
+
+Functional Programming
+
+	- Blocks v. Closures
+	- First-class
+	- Currying, etc.
+	- Generics
+
+
+Other Cool Stuff
+
+	- Custom operators
+	- Case statemnts
+		- Don't fall through by default
+		- Must be exhaustive
+
+
+Extra Nicities
+
+	- One single class (you can still )
+
+
+Mixing with Objc-C
+
+	- Overview
+		- We wouldn't want to convert all our own code, obviously
+		- Adding Swift also adds the Swift GM runtime to app (so as not to app it in iOS and "freeze" it, increasing size, to ensure future compatibility
+			- Should change in a year or two
+	- Common pain points
+		- Swift updates might break things
+			- This is becoming less common as language matures
+		- Collection types
+		- Enums
+		- To be accessible and usable in Objective-C, a Swift class must be a descendant of an Objective-C class or it must be marked @objc.
+
+Learning More
+
+	- Books, blogs, WWDC videos
+	- Smule Wiki on best practices, gotchas
+	- Playgrounds!
+	- Playground Repo for examples
+
+
+Conclusions
